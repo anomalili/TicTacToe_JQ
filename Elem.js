@@ -11,7 +11,7 @@ class Elem {
 
     this.mezoElem.on("click", () => {
       this.kattintas();
-      console.log(this.#index);
+      //console.log(this.#index);
     });
 
 
@@ -19,16 +19,33 @@ class Elem {
 
 
   }
+  
+  LepesSzama = 0;
 
   kattintas() {
-    // console.log("működik a kattintás")
-    let esemeny = new CustomEvent("Valasztas", { detail: this.#index })
-    window.dispatchEvent(esemeny);
+    console.log("működik a kattintás")
+
+
+    $(window).on("Valasztas", (esemeny) => {
+      this.szimbolumValasztasa(esemeny.detail);
+  });
+
 
     console.log(this.#index);
 
-    let index = 0;
-    let win = true;
+
+    console.log(LepesSzama);
+    let txt = "";
+    if (LepesSzama % 2 == 0) {
+                txt += "<p>X</p>";
+              } else {
+                txt += "<p>O</p>";
+              }
+
+    //this.mezoElem.children("txt");
+    LepesSzama++;
+    if (LepesSzama >= 9) { alert("Vége a játékos időnek"); }
+
 
     //  $("div").click(function() {
     //    if (p === null) {
@@ -36,24 +53,18 @@ class Elem {
     //    }
     //  });
 
-    while (win) {
-      //console.log("win ciklkus");
-      if (index % 2 == 0) {
-        this.text = "<p>X</p>";
-      } else {
-        this.text = "<p>O</p>";
-      }
-      $("article.append("íjkfdhaskjfhjkds");
-      index++;
-    }
+
+
+
+
   }
 
 }
 
 
-<p class="id">${this.id}</p>
-                      
-                    </div > `;
-        szuloElem.append(elem);
+//<p class="id">${this.id}</p>
+
+//                    </div > `;
+//        szuloElem.append(elem);
 
 export default Elem;
